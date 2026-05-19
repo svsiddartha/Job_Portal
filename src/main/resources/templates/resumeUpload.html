@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Upload Resume</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(
+        135deg,
+        #020617,
+        #0f172a,
+        #1d4ed8
+    );
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+/* Floating Briefcases */
+
+.briefcase{
+
+    position:absolute;
+
+    font-size:70px;
+
+    color:rgba(255,255,255,0.08);
+
+    animation:float 6s ease-in-out infinite;
+}
+
+.briefcase:nth-child(1){
+
+    top:10%;
+    left:10%;
+}
+
+.briefcase:nth-child(2){
+
+    top:15%;
+    right:12%;
+
+    animation-delay:2s;
+}
+
+.briefcase:nth-child(3){
+
+    bottom:10%;
+    left:12%;
+
+    animation-delay:4s;
+}
+
+.briefcase:nth-child(4){
+
+    bottom:8%;
+    right:10%;
+
+    animation-delay:1s;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0px)
+                  rotate(0deg);
+    }
+
+    50%{
+        transform:translateY(-20px)
+                  rotate(5deg);
+    }
+
+    100%{
+        transform:translateY(0px)
+                  rotate(0deg);
+    }
+}
+
+/* Upload Container */
+
+.container{
+
+    width:520px;
+
+    padding:45px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    box-shadow:
+    0px 8px 40px rgba(0,0,0,0.4);
+
+    text-align:center;
+
+    color:white;
+
+    animation:fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0px);
+    }
+}
+
+/* Title */
+
+.logo{
+
+    font-size:60px;
+
+    color:#a855f7;
+
+    margin-bottom:15px;
+}
+
+h1{
+
+    font-size:38px;
+
+    margin-bottom:30px;
+}
+
+/* Input Box */
+
+.input-box{
+
+    position:relative;
+
+    margin-bottom:25px;
+}
+
+.input-box i{
+
+    position:absolute;
+
+    top:15px;
+    left:15px;
+
+    color:#c084fc;
+
+    font-size:18px;
+}
+
+input[type="email"]{
+
+    width:100%;
+
+    padding:15px 15px 15px 45px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,0.1);
+
+    color:white;
+
+    font-size:15px;
+
+    transition:0.3s ease;
+}
+
+input[type="email"]::placeholder{
+
+    color:#d8b4fe;
+}
+
+input[type="email"]:focus{
+
+    background:rgba(255,255,255,0.15);
+
+    box-shadow:
+    0px 0px 10px rgba(168,85,247,0.5);
+}
+
+/* File Upload */
+
+.file-box{
+
+    background:rgba(255,255,255,0.1);
+
+    padding:20px;
+
+    border-radius:15px;
+
+    margin-bottom:25px;
+
+    border:2px dashed rgba(255,255,255,0.2);
+}
+
+.file-box label{
+
+    display:block;
+
+    margin-bottom:15px;
+
+    font-size:18px;
+
+    color:#e9d5ff;
+}
+
+input[type="file"]{
+
+    color:white;
+
+    width:100%;
+}
+
+/* Button */
+
+button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #7c3aed,
+        #a855f7
+    );
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s ease;
+
+    margin-top:10px;
+}
+
+button:hover{
+
+    transform:
+    translateY(-5px)
+    scale(1.02);
+
+    box-shadow:
+    0px 10px 30px rgba(168,85,247,0.5);
+}
+
+/* Back Link */
+
+.back-link{
+
+    margin-top:25px;
+
+    color:#d1d5db;
+}
+
+.back-link a{
+
+    color:#c084fc;
+
+    text-decoration:none;
+
+    font-weight:600;
+}
+
+.back-link a:hover{
+
+    text-decoration:underline;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Floating Briefcases -->
+
+<i class="fa-solid fa-briefcase briefcase"></i>
+<i class="fa-solid fa-briefcase briefcase"></i>
+<i class="fa-solid fa-briefcase briefcase"></i>
+<i class="fa-solid fa-briefcase briefcase"></i>
+
+<!-- Upload Resume -->
+
+<div class="container">
+
+<div class="logo">
+<i class="fa-solid fa-file-arrow-up"></i>
+</div>
+
+<h1>Upload Resume</h1>
+
+<form action="/uploadResume"
+method="post"
+enctype="multipart/form-data">
+
+<div class="input-box">
+
+<i class="fa-solid fa-envelope"></i>
+
+<input type="email"
+name="uemail"
+placeholder="Enter Your Email"
+required>
+
+</div>
+
+<div class="file-box">
+
+<label>
+
+<i class="fa-solid fa-file-pdf"></i>
+&nbsp;
+Choose Resume File
+
+</label>
+
+<input type="file"
+name="file"
+required>
+
+</div>
+
+<button type="submit">
+
+<i class="fa-solid fa-cloud-arrow-up"></i>
+&nbsp;
+Upload Resume
+
+</button>
+
+</form>
+
+<div class="back-link">
+
+<a href="/loginPage">
+
+<i class="fa-solid fa-arrow-left"></i>
+&nbsp;
+Back
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>

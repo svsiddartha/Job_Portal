@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>View Jobs</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+        135deg,
+        #020617,
+        #0f172a,
+        #1d4ed8
+    );
+
+    padding:40px;
+
+    color:white;
+
+    overflow-x:hidden;
+
+    position:relative;
+}
+
+/* Floating Briefcases */
+
+.briefcase{
+
+    position:absolute;
+
+    font-size:70px;
+
+    color:rgba(255,255,255,0.05);
+
+    animation:float 6s ease-in-out infinite;
+}
+
+.briefcase:nth-child(1){
+
+    top:5%;
+    left:5%;
+}
+
+.briefcase:nth-child(2){
+
+    top:10%;
+    right:8%;
+
+    animation-delay:2s;
+}
+
+.briefcase:nth-child(3){
+
+    bottom:10%;
+    left:8%;
+
+    animation-delay:4s;
+}
+
+.briefcase:nth-child(4){
+
+    bottom:5%;
+    right:5%;
+
+    animation-delay:1s;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0px)
+                  rotate(0deg);
+    }
+
+    50%{
+        transform:translateY(-20px)
+                  rotate(5deg);
+    }
+
+    100%{
+        transform:translateY(0px)
+                  rotate(0deg);
+    }
+}
+
+/* Main Container */
+
+.container{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:40px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    box-shadow:
+    0px 8px 40px rgba(0,0,0,0.4);
+
+    animation:fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0px);
+    }
+}
+
+/* Title */
+
+.title{
+
+    text-align:center;
+
+    margin-bottom:35px;
+}
+
+.title i{
+
+    font-size:60px;
+
+    color:#10b981;
+
+    margin-bottom:15px;
+}
+
+.title h1{
+
+    font-size:42px;
+}
+
+/* Table */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    overflow:hidden;
+
+    border-radius:20px;
+}
+
+th{
+
+    background:
+    linear-gradient(
+        135deg,
+        #059669,
+        #10b981
+    );
+
+    padding:18px;
+
+    font-size:17px;
+}
+
+td{
+
+    padding:18px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,0.05);
+
+    transition:0.3s ease;
+}
+
+tr:hover td{
+
+    background:rgba(255,255,255,0.12);
+}
+
+/* Salary Badge */
+
+.salary{
+
+    display:inline-block;
+
+    padding:8px 15px;
+
+    border-radius:20px;
+
+    font-weight:600;
+
+    background:
+    linear-gradient(
+        135deg,
+        #7c3aed,
+        #a855f7
+    );
+}
+
+/* Back Button */
+
+.back{
+
+    text-align:center;
+
+    margin-top:35px;
+}
+
+.back a{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:14px 28px;
+
+    border-radius:12px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ea580c,
+        #fb923c
+    );
+
+    font-size:17px;
+
+    font-weight:500;
+
+    transition:0.3s ease;
+}
+
+.back a:hover{
+
+    transform:
+    translateY(-5px)
+    scale(1.03);
+
+    box-shadow:
+    0px 10px 30px rgba(251,146,60,0.5);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Floating Briefcases -->
+
+<i class="fa-solid fa-briefcase briefcase"></i>
+<i class="fa-solid fa-briefcase briefcase"></i>
+<i class="fa-solid fa-briefcase briefcase"></i>
+<i class="fa-solid fa-briefcase briefcase"></i>
+
+<!-- Main Container -->
+
+<div class="container">
+
+<div class="title">
+
+<i class="fa-solid fa-briefcase"></i>
+
+<h1>Available Jobs</h1>
+
+</div>
+
+<table>
+
+<tr>
+
+<th>
+<i class="fa-solid fa-id-badge"></i>
+&nbsp;
+Job ID
+</th>
+
+<th>
+<i class="fa-solid fa-briefcase"></i>
+&nbsp;
+Title
+</th>
+
+<th>
+<i class="fa-solid fa-building"></i>
+&nbsp;
+Company
+</th>
+
+<th>
+<i class="fa-solid fa-location-dot"></i>
+&nbsp;
+Location
+</th>
+
+<th>
+<i class="fa-solid fa-money-bill-wave"></i>
+&nbsp;
+Salary
+</th>
+
+</tr>
+
+<tr th:each="job : ${jobs}">
+
+<td th:text="${job.jobId}"></td>
+
+<td th:text="${job.title}"></td>
+
+<td th:text="${job.company}"></td>
+
+<td th:text="${job.location}"></td>
+
+<td>
+
+<span class="salary"
+      th:text="${job.salary}">
+</span>
+
+</td>
+
+</tr>
+
+</table>
+
+<div class="back">
+
+<a href="/recruiterHome">
+
+<i class="fa-solid fa-arrow-left"></i>
+&nbsp;
+Back to Dashboard
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
