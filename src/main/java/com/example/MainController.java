@@ -8,10 +8,10 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class MainController {
 
-    @GetMapping("/Home")
+    @GetMapping("/")
     public String home() {
 
-        return "Index";
+        return "index";
     }
 
     @GetMapping("/logout")
